@@ -8,7 +8,7 @@ function one()
    two(function(err){
      if(err){
        throw err;
-     }  
+     }
    
      console.log("two finished");
    });
@@ -22,7 +22,7 @@ function two(callback)
       if(err) {
         callback(err);
         return;
-      }   
+      }
       
       console.log("three finished");
       callback();
@@ -95,7 +95,7 @@ if(ERR(err, callback)) return;
 ```js
 if(err){
   throw err;
-}  
+}
 ```
 
 ### with
@@ -107,7 +107,7 @@ ERR(err);
 ### This is how it looks like now: 
 
 ```js
-require("./ERR");
+var ERR = require("async-stacktrace");
 
 function one()
 {
@@ -182,10 +182,10 @@ npm install async-stacktrace
 
 ## Usage
 
-The `ERR` function is set global. All you have to add to your code is
+This is how you require the ERR function
 
 ```js
-require("./ERR");
+var ERR = require("async-stacktrace");
 ```
 
 The parameters of `ERR()` are: 

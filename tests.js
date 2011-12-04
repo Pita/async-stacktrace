@@ -1,5 +1,6 @@
 var vows = require('vows');
 var assert = require('assert');
+var ERR = require("./ERR");
 
 var emptyFunc = function(){};
 
@@ -9,8 +10,12 @@ vows.describe('ERR function').addBatch({
       return require("./ERR");
     },
     
-    'its global': function(topic){
-      assert.equal(topic.ERR, global.ERR);
+    'it returns the ERR function': function(topic){
+      assert.equal(typeof topic, "function");
+    },
+    
+    'its not global': function(topic){
+      assert.isUndefined(global.ERR);
     }
   }
 }).addBatch({

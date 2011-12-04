@@ -1,4 +1,4 @@
-require("./ERR");
+var ERR = require("./ERR");
 
 function one()
 {

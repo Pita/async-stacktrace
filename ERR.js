@@ -16,7 +16,7 @@
 
 var header = "Async Stacktrace:";
 
-exports.ERR = global.ERR = function (err, callback)
+module.exports = function (err, callback)
 {
   //there is a error
   if(err != null)
