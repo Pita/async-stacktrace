@@ -191,6 +191,6 @@ var ERR = require("async-stacktrace");
 The parameters of `ERR()` are: 
 
 1. `err` The error object (can be a string that describes the error too)
-2. `callback` (optional) If the callback is set and an error is passed, it will call the callback with the modified stacktrace. Else it will throw the error
+2. `callback` (optional) If the callback is set and an error is passed, it will call the callback with the modified stacktrace. Otherwise it will do nothing (the caller can pass the returned `err` object to the callback if desired).
 
-The return value is true if there is an error. Else its false
+The return value is the `err` object passed as the first parameter (if it was passed as a string, it will be returned as a first-class `Error()` object).
