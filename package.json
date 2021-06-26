@@ -1,11 +1,12 @@
 {
-  "name"              : "async-stacktrace",
-  "description"       : "Improves node.js stacktraces and makes it easier to handle errors",
-  "homepage"          : "https://github.com/Pita/async-stacktrace",
-  "author"            : "Peter 'Pita' Martischka <petermartischka@googlemail.com>",
-  "devDependencies"  : {
-                          "vows"      : "0.6.0"
-                        },
-  "main"              : "./ERR",
-  "version"           : "0.0.2"
+  "name": "async-stacktrace",
+  "description": "Improves node.js stacktraces and makes it easier to handle errors",
+  "homepage": "https://github.com/Pita/async-stacktrace",
+  "author": "Peter 'Pita' Martischka <petermartischka@googlemail.com>",
+  "devDependencies": {
+    "vows": "0.6.0"
+  },
+  "main": "./ERR",
+  "license": "MIT",
+  "version": "0.0.2"
 }
