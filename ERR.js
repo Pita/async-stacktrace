@@ -16,13 +16,27 @@
 
 var header = "Async Stacktrace:";
 
-module.exports = function (err, callback)
+function ERR(err, callback, asyncStackLine)
 {
   //there is a error
   if(err != null)
   {
+    // determine the new stacktrace line
+    if (!asyncStackLine)
+      asyncStackLine = new Error().stack.split("\n")[2];
+
+    //if only the callback function is passed
+    if(typeof err == "function")
+    {
+      //wrap callback so ERR() is eventually called w/ the cached stacktrace line
+      callback = err;
+      return function(err) {
+        if (ERR(err, callback, asyncStackLine)) return;
+        callback.apply(this, arguments);
+      };
+    }
     //if there is already a stacktrace avaiable
-    if(err.stack != null)
+    else if(err.stack != null)
     {
       //split stack by line
       var stackParts = err.stack.split("\n");
@@ -34,7 +48,6 @@ module.exports = function (err, callback)
       }
       
       //add a new stacktrace line
-      var asyncStackLine = new Error().stack.split("\n")[2];
       stackParts.splice(1,0,asyncStackLine);
       
       //join the stacktrace
@@ -61,3 +74,5 @@ module.exports = function (err, callback)
   //return true if an error happend
   return err != null;
 }
+
+module.exports = ERR;
