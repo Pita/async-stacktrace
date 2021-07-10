@@ -46,18 +46,12 @@ module.exports = function (err, callback)
       err = new Error(err);
     }
   
-    //there is a callback, lets call it
+    //if a callback is passed, lets call it
     if(callback != null)
     {
       callback(err);
     }
-    //no callback, throw the error
-    else
-    {
-      throw err;
-    }
   }
   
-  //return true if an error happend
-  return err != null;
+  return err;
 }

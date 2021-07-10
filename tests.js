@@ -20,13 +20,13 @@ vows.describe('ERR function').addBatch({
   }
 }).addBatch({
   'when you call it without an error' : {
-    'it returns false' : function() {
-      assert.isFalse(ERR());
+    'it returns falsy' : function() {
+      assert(!ERR());
     }
   },
   'when you call it with an error' : {
-    'it returns true' : function() {
-      assert.isTrue(ERR(new Error(), emptyFunc));
+    'it returns truthy' : function() {
+      assert(ERR(new Error(), emptyFunc));
     }
   },
   'when you give it a callback and an error': {
@@ -37,19 +37,11 @@ vows.describe('ERR function').addBatch({
     }
   },
   'when you give it no callback and an error': {
-    'it throws the error' : function() {
+    'it returns the error (so it can be passed to the callback)' : function() {
       var wasThrown = false;
       
-      try
-      {
-        ERR(new Error());
-      }
-      catch(e)
-      {
-        wasThrown = true;
-      }
-      
-      assert.isTrue(wasThrown);
+      var err = new Error();
+      assert.equal(ERR(err), err);
     }
   },
   'when you call it with a string as an error' : {
